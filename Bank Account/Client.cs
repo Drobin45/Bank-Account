@@ -12,11 +12,13 @@ namespace Bank_Account
         protected string clientName;
         protected string occupation;
         protected double moneyInWallet;
+        protected string clientAddress;
 
         //Client properties
         public string ClientName {get;}
         public string Occupation {get; set;}
         public double MoneyInWallet {get; set;}
+        public string ClientAddress {get; set;}
 
         //Client constructors
         public Client()
@@ -24,28 +26,20 @@ namespace Bank_Account
             //Default
         }
 
-        public Client(string clientName, string occupation, double moneyInWallet)
+        public Client(string clientName, string occupation, double moneyInWallet, string clientAddress)
         {
             this.clientName = clientName;
             this.occupation = occupation;
             this.moneyInWallet = moneyInWallet;
+            this.clientAddress = clientAddress;
         }
 
         //Methods
-        public static double Deposit()
+        public static void viewInfo()
         {
-            double depositAmmount = double.Parse(Console.ReadLine());
-            return depositAmmount;
-
-
-            //Figure out how to do the below
-            //depositAmmount += accountBalance;
-            //depositAmmound -= moneyInWallet
-        }
-
-
-
-        //"Client information should be filled in here" What does this mean?
+            //place full list of client information available here!
+            Console.WriteLine();
+        }      
 
 
 

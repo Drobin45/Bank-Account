@@ -32,5 +32,28 @@ namespace Bank_Account
         }
 
         //Methods
+
+        public static double Deposit()
+        {
+            double depositAmmount = double.Parse(Console.ReadLine());
+            return depositAmmount;
+
+
+            //Figure out how to do the below
+            //depositAmmount += accountBalance;
+            //depositAmmound -= moneyInWallet
+        }
+
+        public static double Withdraw()
+        {
+            double withdrawAmmount = double.Parse(Console.ReadLine());
+
+            return withdrawAmmount;
+
+
+            //Figure out how to do the below
+            //depositAmmount += accountBalance;
+            //depositAmmound -= moneyInWallet
+        }
     }
 }

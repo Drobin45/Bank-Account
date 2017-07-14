@@ -10,9 +10,9 @@ namespace Bank_Account
     {
         static void Main(string[] args)
         {
-            //Part One: Create functional menu that allows for further options to be opened up at user's choice. 
+            //Menu Items: Create functional menu that allows for further options to be opened up at user's choice. 
 
-            Console.WriteLine("Welcome to your personal bank account system! \nPlease choose your action from the following \n View Client Information \nView Account Balance\n Withdraw Funds \n Exit");
+            Console.WriteLine("Welcome to your personal bank account system! \nPlease choose your action from the following \nView Client Information \nView Account Balance\nWithdraw Funds \nExit");
             string openingCommand = Console.ReadLine();
             string upperOpeningCommand = openingCommand.ToUpper();
 
@@ -23,8 +23,7 @@ namespace Bank_Account
 
             else if (upperOpeningCommand == "VIEW ACCOUNT BALANACE")
             {
-                Console.WriteLine("Please select from the following: \nChecking Account Balance \nSavings Account Balance");
-                string
+                Console.WriteLine("Please select from the following: \nChecking Account Balance \nSavings Account Balance");                
             }
 
             else if (upperOpeningCommand == "DEPOSIT FUNDS")
@@ -46,15 +45,23 @@ namespace Bank_Account
             {
                 Console.WriteLine("Please type a valid command");
             }
-                      
+            //Client Instance
+            Client jack = new Client("vettriano", "painter", 24, "KnightsBridge London");
 
-           
+            //Savings Instance
+            Savings_Account savings = new Savings_Account(11111111, 300000, "Savings Account");
+
+            //Checking Instance
+            Checking_Account checking = new Checking_Account(11111111, 200000, "Checking Account");
+
             //- [ ] View Account Balance
             //  - [ ] Checking Account Balance
             //  - [ ] Savings Account Balance
+
             //- [ ] Deposit Funds
             //  - [ ] To Checking Account
             //  - [ ] To Savings Account
+
             //- [ ] Withdraw Funds
             //  - [ ] From Checking Account
             //  - [ ] From Savings Account
