@@ -16,7 +16,7 @@ namespace Bank_Account
             this.accountType = accountType;
         }
 
-        //Methods
+        //Methods       
 
         public static double Deposit()
         {

@@ -16,11 +16,7 @@ namespace Bank_Account
             this.accountType = accountType;
         }
 
-        //Methods
-        public static void ViewBalance()
-        {
-            Console.WriteLine(balance);
-        }
+        //Methods        
 
         public static double Deposit()
         {

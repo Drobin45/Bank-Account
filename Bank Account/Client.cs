@@ -18,7 +18,7 @@ namespace Bank_Account
         public string ClientName {get;}
         public string Occupation {get; set;}
         public double MoneyInWallet {get; set;}
-        public string ClientAddress {get; set;}
+        public string ClientAddress {get; set;}        
 
         //Client constructors
         public Client()
@@ -31,16 +31,14 @@ namespace Bank_Account
             this.clientName = clientName;
             this.occupation = occupation;
             this.moneyInWallet = moneyInWallet;
-            this.clientAddress = clientAddress;
+            this.clientAddress = clientAddress;            
         }
 
         //Methods
-        public static void viewInfo()
+        public virtual string ViewInfo()
         {
-            //place full list of client information available here!
-            Console.WriteLine();
+            return "Name:" + clientName + "\n" + "Occupation:" + occupation + "Address:" + clientAddress;
         }      
-
 
 
 

@@ -44,7 +44,7 @@ namespace Bank_Account
             //depositAmmound -= moneyInWallet
         }
 
-        public static double Withdraw()
+        public virtual double Withdraw()
         {
             double withdrawAmmount = double.Parse(Console.ReadLine());
 
@@ -55,5 +55,12 @@ namespace Bank_Account
             //depositAmmount += accountBalance;
             //depositAmmound -= moneyInWallet
         }
+
+        public virtual string GetAccountBalance()
+        {
+            return "Account Balance:" + balance;
+        }
+        //originally intended to make this static instead of virtual, but...
+        //...for reasons unknown, balance malfunctions under a static method.
     }
 }
