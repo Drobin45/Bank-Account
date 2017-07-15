@@ -15,7 +15,7 @@ namespace Bank_Account
 
         //Properties
         public int AccountNumber {get;}
-        public double Balance {get;}
+        public double Balance { get; set; }
         public string AccountType {get;}
 
         //Constructors
@@ -34,11 +34,17 @@ namespace Bank_Account
         //Methods
 
       
-        public virtual double Withdraw()
+        //public virtual double Withdraw()
+        //{
+        //    double withdrawAmmount = double.Parse(Console.ReadLine());
+        //    balance += withdrawAmmount;
+        //    return withdrawAmmount;
+        //}
+
+        public virtual void Withdraw()
         {
-            double withdrawAmmount = double.Parse(Console.ReadLine());
-            balance += withdrawAmmount;
-            return withdrawAmmount;
+
+            balance += 20;
         }
         public virtual double Deposit()
         {

@@ -11,84 +11,96 @@ namespace Bank_Account
         static void Main(string[] args)
         {
             
-            //Client Instance
-            Client jack = new Client("Jack Vettriano", "Famed Painter", 24, "6716 Princess Gardens, KnightsBridge, London");
-
-            //Savings Instance
-            Savings_Account savings = new Savings_Account(11111111, 300000, "Savings Account");
-
-            //Checking Instance
+            //Initializing three primary class instances
+            Client jack = new Client("Jack Vettriano", "Famed Painter", 300, "6716 Princess Gardens, KnightsBridge, London");
+                        
+            Savings_Account savings = new Savings_Account(123456, 500, "Savings Account");
+                       
             Checking_Account checking = new Checking_Account(11111111, 200000, "Checking Account");
 
-            //Menu Items: Create functional menu that allows for further options to be opened up at user's choice. 
+            //Functional menu created 
+            string openingCommand;
+            string upperOpeningCommand;
 
-            Console.WriteLine("Welcome to your personal bank account system! \nPlease choose your action from the following: \nView My Information \nView Account Balance\nWithdraw Funds \nDeposit Funds \nExit");
-            string openingCommand = Console.ReadLine();
-            string upperOpeningCommand = openingCommand.ToUpper();
+            do
+            {                
+                Console.WriteLine("View Client Information \nView Account Balance\nDeposit Funds \nWithdraw Funds \nExit");                
+                openingCommand = Console.ReadLine();
+                upperOpeningCommand = openingCommand.ToUpper();
+                Console.Clear();
 
-            if (upperOpeningCommand == "VIEW MY INFORMATION")
-            {
-                Console.WriteLine(jack.ViewInfo());
-            }
-
-            else if (upperOpeningCommand == "VIEW ACCOUNT BALANCE")
-            {
-                Console.WriteLine("Please select from the following: \nChecking Account Balance \nSavings Account Balance");
-                string accountBalance = Console.ReadLine();
-                string upperAccountBalance = accountBalance.ToUpper();
-                if (upperAccountBalance == "CHECKING ACCOUNT BALANCE")
+                //Client Information
+                if (upperOpeningCommand == "VIEW CLIENT INFORMATION")
                 {
-                    Console.WriteLine("Your balance is" + checking.GetAccountBalance()); 
+                    Console.WriteLine(jack.ViewInfo());
                 }
-                else if ((upperAccountBalance == "SAVINGS ACCOUNT BALANCE"))
-                {
-                    Console.WriteLine("Your balance is" + savings.GetAccountBalance());
-                }
-            }
 
-            else if (upperOpeningCommand == "DEPOSIT FUNDS")
-            {
-                Console.WriteLine("Which of the following accounts would you like to make a deposit in? \nSavings Account \nChecking Account");
-                string depositChoice  = Console.ReadLine();
-                string upperDepositChoice = depositChoice.ToUpper();
-                if(upperDepositChoice == "SAVINGS ACCOUNT")
+                //View Account Balance
+                else if (upperOpeningCommand == "VIEW ACCOUNT BALANCE")
                 {
-                    savings.Deposit();
-                    Console.WriteLine("The new balance for your savings account is: " + savings.Balance );
+                    Console.WriteLine("Please select from the following: \nChecking Account Balance \nSavings Account Balance");
+                    string accountBalance = Console.ReadLine();
+                    string upperAccountBalance = accountBalance.ToUpper();
+                    if (upperAccountBalance == "CHECKING ACCOUNT BALANCE")
+                    {
+                        Console.WriteLine("Your balance is " + checking.GetAccountBalance());
+                    }
+                    else if ((upperAccountBalance == "SAVINGS ACCOUNT BALANCE"))
+                    {
+                        Console.WriteLine("Your balance is " + savings.GetAccountBalance());
+                    }
                 }
-                else if(upperDepositChoice == "CHECKING ACCOUNT")
-                {
-                    checking.Deposit();
-                    Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
-                }
-            }
 
-            else if (upperOpeningCommand == "WITHDRAW FUNDS")
-            {
-                Console.WriteLine("Which of the following accounts would you like to make a withdraw? \nSavings Account \nChecking Account");
-                string withdrawChoice = Console.ReadLine();
-                string upperWithdrawChoice = withdrawChoice.ToUpper();
-                if (upperWithdrawChoice == "SAVINGS ACCOUNT")
+                //Deposit Funds
+                else if (upperOpeningCommand == "DEPOSIT FUNDS")
                 {
-                    savings.Withdraw();
-                    Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
+                    Console.WriteLine("Which of the following accounts would you like to make a deposit in? \nSavings Account \nChecking Account");
+                    string depositChoice = Console.ReadLine();
+                    string upperDepositChoice = depositChoice.ToUpper();
+                    if (upperDepositChoice == "SAVINGS ACCOUNT")
+                    {
+                        savings.Deposit();
+                        Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
+                    }
+                    else if (upperDepositChoice == "CHECKING ACCOUNT")
+                    {
+                        checking.Deposit();
+                        Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                    }
                 }
-                else if (upperWithdrawChoice == "CHECKING ACCOUNT")
+
+                //Withdraw Funds
+                else if (upperOpeningCommand == "WITHDRAW FUNDS")
                 {
-                    checking.Withdraw();
-                    Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                    Console.WriteLine("Which of the following accounts would you like to make a withdraw? \nSavings Account \nChecking Account");
+                    string withdrawChoice = Console.ReadLine();
+                    string upperWithdrawChoice = withdrawChoice.ToUpper();
+                    if (upperWithdrawChoice == "SAVINGS ACCOUNT")
+                    {
+                        if (savings.Balance < 200)
+                        {
+                            Console.WriteLine("Savings account too low for withraw. The minimum balance required for withdraw is 200$");
+                        }
+                        else
+                        {
+                            savings.Withdraw();
+                            Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
+                        }
+                    }
+                    else if (upperWithdrawChoice == "CHECKING ACCOUNT")
+                    {
+                        checking.Withdraw();
+                        Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                    }
                 }
-            }
+                //Exit Program & and invalid command text                
 
-            else if (upperOpeningCommand == "EXIT")
-            {
-                Environment.Exit(0);
-            }
-
-            else
-            {
-                Console.WriteLine("Please type a valid command");            
-            }        
+                else
+                {
+                    Console.WriteLine("Please type a valid command");
+                }
+                
+            } while (upperOpeningCommand != "EXIT");
                                     
         }
     }

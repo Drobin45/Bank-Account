@@ -8,6 +8,12 @@ namespace Bank_Account
 {
     class Checking_Account : Accounts_Template
     {
+        
+        
+        public Checking_Account()
+        {
+            //Default
+        }
 
         public Checking_Account(int accountNumber, double balance, string accountType)
         {
@@ -16,7 +22,7 @@ namespace Bank_Account
             this.accountType = accountType;
         }
 
-        //Methods       
+             
 
         
     }
