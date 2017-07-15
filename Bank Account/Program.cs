@@ -12,7 +12,7 @@ namespace Bank_Account
         {
             
             //Client Instance
-            Client jack = new Client("vettriano", "painter", 24, "KnightsBridge London");
+            Client jack = new Client("Jack Vettriano", "Famed Painter", 24, "6716 Princess Gardens, KnightsBridge, London");
 
             //Savings Instance
             Savings_Account savings = new Savings_Account(11111111, 300000, "Savings Account");
@@ -22,11 +22,11 @@ namespace Bank_Account
 
             //Menu Items: Create functional menu that allows for further options to be opened up at user's choice. 
 
-            Console.WriteLine("Welcome to your personal bank account system! \nPlease choose your action from the following \nView Client Information \nView Account Balance\nWithdraw Funds \nExit");
+            Console.WriteLine("Welcome to your personal bank account system! \nPlease choose your action from the following: \nView My Information \nView Account Balance\nWithdraw Funds \nDeposit Funds \nExit");
             string openingCommand = Console.ReadLine();
             string upperOpeningCommand = openingCommand.ToUpper();
 
-            if (upperOpeningCommand == "VIEW CLIENT INFORMATION")
+            if (upperOpeningCommand == "VIEW MY INFORMATION")
             {
                 Console.WriteLine(jack.ViewInfo());
             }
@@ -48,12 +48,36 @@ namespace Bank_Account
 
             else if (upperOpeningCommand == "DEPOSIT FUNDS")
             {
-
+                Console.WriteLine("Which of the following accounts would you like to make a deposit in? \nSavings Account \nChecking Account");
+                string depositChoice  = Console.ReadLine();
+                string upperDepositChoice = depositChoice.ToUpper();
+                if(upperDepositChoice == "SAVINGS ACCOUNT")
+                {
+                    savings.Deposit();
+                    Console.WriteLine("The new balance for your savings account is: " + savings.Balance );
+                }
+                else if(upperDepositChoice == "CHECKING ACCOUNT")
+                {
+                    checking.Deposit();
+                    Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                }
             }
 
             else if (upperOpeningCommand == "WITHDRAW FUNDS")
             {
-
+                Console.WriteLine("Which of the following accounts would you like to make a withdraw? \nSavings Account \nChecking Account");
+                string withdrawChoice = Console.ReadLine();
+                string upperWithdrawChoice = withdrawChoice.ToUpper();
+                if (upperWithdrawChoice == "SAVINGS ACCOUNT")
+                {
+                    savings.Withdraw();
+                    Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
+                }
+                else if (upperWithdrawChoice == "CHECKING ACCOUNT")
+                {
+                    checking.Withdraw();
+                    Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                }
             }
 
             else if (upperOpeningCommand == "EXIT")
@@ -63,22 +87,9 @@ namespace Bank_Account
 
             else
             {
-                Console.WriteLine("Please type a valid command");
-            }
-            
-
-            //- [ ] View Account Balance
-            //  - [ ] Checking Account Balance
-            //  - [ ] Savings Account Balance
-
-            //- [ ] Deposit Funds
-            //  - [ ] To Checking Account
-            //  - [ ] To Savings Account
-
-            //- [ ] Withdraw Funds
-            //  - [ ] From Checking Account
-            //  - [ ] From Savings Account
-            
+                Console.WriteLine("Please type a valid command");            
+            }        
+                                    
         }
     }
 }

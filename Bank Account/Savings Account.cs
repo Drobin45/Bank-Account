@@ -16,19 +16,14 @@ namespace Bank_Account
             this.accountType = accountType;
         }
 
-        //Methods       
-
-        public static double Deposit()
-        {
-            double depositAmmount = double.Parse(Console.ReadLine());
-            return depositAmmount;
-        }
-
+        //Methods     
+                
         //Don't forget to put a limit on savings withdraw. If client has less than 200$ he/she can't withdraw!
 
-        public static double Withdraw()
+        public virtual double SavingsWithdraw()
         {
             double withdrawAmmount = double.Parse(Console.ReadLine());
+            balance += withdrawAmmount;
 
             return withdrawAmmount;
         }

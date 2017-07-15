@@ -33,27 +33,18 @@ namespace Bank_Account
 
         //Methods
 
-        public static double Deposit()
-        {
-            double depositAmmount = double.Parse(Console.ReadLine());
-            return depositAmmount;
-
-
-            //Figure out how to do the below
-            //depositAmmount += accountBalance;
-            //depositAmmound -= moneyInWallet
-        }
-
+      
         public virtual double Withdraw()
         {
             double withdrawAmmount = double.Parse(Console.ReadLine());
-
+            balance += withdrawAmmount;
             return withdrawAmmount;
-
-
-            //Figure out how to do the below
-            //depositAmmount += accountBalance;
-            //depositAmmound -= moneyInWallet
+        }
+        public virtual double Deposit()
+        {
+            double depositAmmount = double.Parse(Console.ReadLine());
+            balance += depositAmmount;
+            return depositAmmount;
         }
 
         public virtual string GetAccountBalance()

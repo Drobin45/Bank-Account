@@ -16,19 +16,8 @@ namespace Bank_Account
             this.accountType = accountType;
         }
 
-        //Methods        
+        //Methods       
 
-        public static double Deposit()
-        {
-            double depositAmmount = double.Parse(Console.ReadLine());
-            return depositAmmount;
-        }
-
-        public static double Withdraw()
-        {
-            double withdrawAmmount = double.Parse(Console.ReadLine());
-
-            return withdrawAmmount;
-        }
+        
     }
 }
