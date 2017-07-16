@@ -38,9 +38,6 @@ namespace Bank_Account
         public virtual string ViewInfo()
         {
             return "Name:" + clientName + "\n" + "Occupation:" + occupation + "\n" + "Address:" + clientAddress;
-        }      
-
-
-
+        }     
     }
 }

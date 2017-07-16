@@ -9,12 +9,11 @@ namespace Bank_Account
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {            
             //Initializing three primary class instances
             Client jack = new Client("Jack Vettriano", "Famed Painter", 300, "6716 Princess Gardens, KnightsBridge, London");
                         
-            Savings_Account savings = new Savings_Account(123456, 500, "Savings Account");
+            Savings_Account savings = new Savings_Account(123456, 500, "Savings Account", .005d);
                        
             Checking_Account checking = new Checking_Account(11111111, 200000, "Checking Account");
 
@@ -24,10 +23,10 @@ namespace Bank_Account
 
             do
             {                
-                Console.WriteLine("View Client Information \nView Account Balance\nDeposit Funds \nWithdraw Funds \nExit");                
+                Console.WriteLine("\n1.View Client Information \n2.View Account Balance\n3.Deposit Funds \n4.Withdraw Funds \n5.Exit \n");                
                 openingCommand = Console.ReadLine();
                 upperOpeningCommand = openingCommand.ToUpper();
-                Console.Clear();
+                //Console.Clear(); I feel that the console looks much "cleaner" after being cleared, but this interfered with the console format required for this assignment
 
                 //Client Information
                 if (upperOpeningCommand == "VIEW CLIENT INFORMATION")
@@ -38,7 +37,7 @@ namespace Bank_Account
                 //View Account Balance
                 else if (upperOpeningCommand == "VIEW ACCOUNT BALANCE")
                 {
-                    Console.WriteLine("Please select from the following: \nChecking Account Balance \nSavings Account Balance");
+                    Console.WriteLine("\n2 \na. Checking Account Balance \nb. Savings Account Balance\n");
                     string accountBalance = Console.ReadLine();
                     string upperAccountBalance = accountBalance.ToUpper();
                     if (upperAccountBalance == "CHECKING ACCOUNT BALANCE")
@@ -54,52 +53,51 @@ namespace Bank_Account
                 //Deposit Funds
                 else if (upperOpeningCommand == "DEPOSIT FUNDS")
                 {
-                    Console.WriteLine("Which of the following accounts would you like to make a deposit in? \nSavings Account \nChecking Account");
+                    Console.WriteLine("\n2 \n\na. Savings Account \nb. Checking Account\n");
                     string depositChoice = Console.ReadLine();
                     string upperDepositChoice = depositChoice.ToUpper();
                     if (upperDepositChoice == "SAVINGS ACCOUNT")
                     {
                         savings.Deposit();
-                        Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
+                        Console.WriteLine("The new balance for your savings account is: " + savings.GetAccountBalance());
                     }
                     else if (upperDepositChoice == "CHECKING ACCOUNT")
                     {
                         checking.Deposit();
-                        Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                        Console.WriteLine("The new balance for your checking account is: " + checking.GetAccountBalance());
                     }
                 }
 
                 //Withdraw Funds
                 else if (upperOpeningCommand == "WITHDRAW FUNDS")
                 {
-                    Console.WriteLine("Which of the following accounts would you like to make a withdraw? \nSavings Account \nChecking Account");
+                    Console.WriteLine("\n2 \n\na. Savings Account \nb. Checking Account\n");
                     string withdrawChoice = Console.ReadLine();
                     string upperWithdrawChoice = withdrawChoice.ToUpper();
                     if (upperWithdrawChoice == "SAVINGS ACCOUNT")
-                    {
-                        if (savings.Balance < 200)
-                        {
-                            Console.WriteLine("Savings account too low for withraw. The minimum balance required for withdraw is 200$");
-                        }
-                        else
-                        {
-                            savings.Withdraw();
-                            Console.WriteLine("The new balance for your savings account is: " + savings.Balance);
-                        }
+                    {                      
+                        savings.Withdraw();
+                        Console.WriteLine("The new balance for your savings account is: " + savings.GetAccountBalance());                        
                     }
                     else if (upperWithdrawChoice == "CHECKING ACCOUNT")
                     {
                         checking.Withdraw();
-                        Console.WriteLine("The new balance for your checking account is: " + checking.Balance);
+                        Console.WriteLine("The new balance for your checking account is: " + checking.GetAccountBalance());
                     }
                 }
-                //Exit Program & and invalid command text                
-
+                //Exit Program & and invalid command text          
                 else
                 {
-                    Console.WriteLine("Please type a valid command");
+                    if (upperOpeningCommand == "EXIT")
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please type a valid command");
+                    }
                 }
-                
+
             } while (upperOpeningCommand != "EXIT");
                                     
         }

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace Bank_Account
 {
     class Checking_Account : Accounts_Template
-    {
-        
-        
+    {                
         public Checking_Account()
         {
             //Default
@@ -20,10 +18,6 @@ namespace Bank_Account
             this.accountNumber = accountNumber;
             this.balance = balance;
             this.accountType = accountType;
-        }
-
-             
-
-        
+        }                
     }
 }

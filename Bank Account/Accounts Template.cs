@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 namespace Bank_Account
 {
     abstract class Accounts_Template
-    {
-        //Fields
+    {        
         protected int accountNumber;
         protected double balance;
         protected string accountType;
-
-        //Properties
+                
         public int AccountNumber {get;}
         public double Balance { get; set; }
         public string AccountType {get;}
-
-        //Constructors
+                
         public Accounts_Template()
         {
             //default
@@ -29,22 +26,16 @@ namespace Bank_Account
             this.accountNumber = accountNumber;
             this.balance = balance;
             this.accountType = accountType;
-        }
+        }          
 
         //Methods
-
-      
-        //public virtual double Withdraw()
-        //{
-        //    double withdrawAmmount = double.Parse(Console.ReadLine());
-        //    balance += withdrawAmmount;
-        //    return withdrawAmmount;
-        //}
-
-        public virtual void Withdraw()
+        
+        public virtual double Withdraw()
         {
-
-            balance += 20;
+            double withdrawAmmount = double.Parse(Console.ReadLine());
+            balance -= withdrawAmmount;
+            return withdrawAmmount;
+            
         }
         public virtual double Deposit()
         {
