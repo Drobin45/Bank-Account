@@ -90,6 +90,7 @@ namespace Bank_Account
                 {
                     if (upperOpeningCommand == "EXIT")
                     {
+                        savings.Exit();
                         Environment.Exit(0);
                     }
                     else

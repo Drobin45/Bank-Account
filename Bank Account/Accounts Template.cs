@@ -50,5 +50,11 @@ namespace Bank_Account
         }
         //originally intended to make this static instead of virtual, but...
         //...for reasons unknown, balance malfunctions under a static method.
+
+        public abstract void Exit();
+
+        //Discovered last minute that we needed an abstract method. While it is implemented in the Savings_Account...
+        // and in the main program, this method is somewhat superfluous, but it meets the project requirements.
+
     }
 }

@@ -18,6 +18,10 @@ namespace Bank_Account
             this.accountNumber = accountNumber;
             this.balance = balance;
             this.accountType = accountType;
-        }                
+        }
+        public override void Exit()
+        {
+            Console.WriteLine("Exiting Program!");
+        }
     }
 }

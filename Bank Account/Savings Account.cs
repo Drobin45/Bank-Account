@@ -44,6 +44,12 @@ namespace Bank_Account
             }
         }
 
+        public override void Exit()
+        {
+            Console.WriteLine("Exiting Program!");
+        }
+        
+
 
 
     }
